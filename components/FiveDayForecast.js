@@ -1,6 +1,6 @@
-import Daily from "../components/daily"
+import Daily from "./daily"
 
-export default function WeatherForecast(weather) {
+export default function FiveDayForecast(weather) {
   // crazy
   const data = weather["weather"]["weather"]
   const dates = Object.keys(data)
@@ -8,6 +8,6 @@ export default function WeatherForecast(weather) {
   return (
     <section>
       {dates.map((d) => <Daily day={d} data={data[d]}></Daily>)}
-    </section>   
+    </section>
   )
 }

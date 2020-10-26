@@ -14,6 +14,7 @@ export async function getServerSideProps() {
 }
 
 export default function IndexPage(weather) {
+
   return (
     <div>
       <Nav />
