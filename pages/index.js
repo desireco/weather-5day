@@ -1,5 +1,5 @@
 import Nav from '../components/nav'
-import WeatherForecast from '../components/weatherForecast'
+import FiveDayForecast from '../components/FiveDayForecast'
 
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.BASE_URL}/api/weather`)
@@ -21,7 +21,7 @@ export default function IndexPage(weather) {
         <h1 className="text-5xl text-accent-1">
           5 Day Weather
         </h1>
-        <WeatherForecast weather={weather}></WeatherForecast>
+        <FiveDayForecast weather={weather}></FiveDayForecast>
       </div>
     </div>
   )
