@@ -1,8 +1,7 @@
 import Daily from "./daily"
 
 export default function FiveDayForecast(weather) {
-  // crazy
-  const data = weather["weather"]["weather"]
+  const data = weather["weather"]
   const dates = Object.keys(data)
   
   return (
