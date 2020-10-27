@@ -7,7 +7,7 @@ export default function FiveDayForecast(weather) {
   
   return (
     <section>
-      {dates.map((d) => <Daily day={d} data={data[d]}></Daily>)}
+      {dates.map((d) => <Daily day={d} data={data[d]} key={d}></Daily>)}
     </section>
   )
 }

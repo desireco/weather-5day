@@ -22,8 +22,8 @@ export default function Daily(data) {
   let humidity = round(getAvgKey(wdata, "humidity"))
 
   return (
-    <div className={dateOfForecast}>
-      <h3 class="text-2xl py-2">{dateTimeFormatted} </h3>
+    <div>
+      <h3 className="text-2xl py-2">{dateTimeFormatted} </h3>
       <p>Temperature: {t} Feels like: {tFeels} Humidity: {humidity}</p>
     </div>
   )
