@@ -18,7 +18,6 @@ export default function IndexPage() {
   });
   
   async function fetchWeatherData(location) {
-    console.log(location)
     const res = await fetch(`${process.env.BASE_URL}/api/weather/?lat=${location.latitude}&lon=${location.longitude}`)
     const weather = await res.json()
   

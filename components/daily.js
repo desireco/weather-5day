@@ -24,7 +24,7 @@ export default function Daily(data) {
   return (
     <div>
       <h3 className="text-2xl py-2">{dateTimeFormatted} </h3>
-      <p>Temperature: {t} Feels like: {tFeels} Humidity: {humidity}</p>
+      <p>Temperature: {t}&#8457; Feels like: {tFeels}&#8457; Humidity: {humidity}%</p>
     </div>
   )
 }
