@@ -1,4 +1,4 @@
-import { round, meanBy, minBy, maxBy } from 'lodash';
+import { round, meanBy, minBy, maxBy, startCase } from 'lodash';
 
 function getAvgKey(data, key) {
   return meanBy(data, (i) => i["main"][key]);
@@ -29,18 +29,16 @@ export default function Daily(data) {
   const tFeels = KtoF(getAvgKey(wdata, "feels_like"))
   const humidity = round(getAvgKey(wdata, "humidity"))
   const icon = `https://openweathermap.org/img/w/${wdata[0].weather[0].icon}.png`
-  const desc = wdata[0]["weather"][0]["description"]
+  const desc = _.startCase(wdata[0]["weather"][0]["description"])
 
   return (
-    <div>
-      <h3 className="text-2xl py-2">{dateTimeFormatted} </h3>
-      <div>
-          <p className="text-center w-full"><img src={icon} /></p>
-          Temperature: {t}&#8457; / {tMin} {tMax} Feels like: {tFeels}&#8457; <br />
-          Humidity: {humidity}% <br />
-          {desc}
-      </div>
-      
+    <div className="mt-6">
+      <h3 className="text-xl py-2">Weather forecast for {dateTimeFormatted} </h3>
+          <img className="h-16 w-16 rounded-full mx-auto" src={icon} />
+          <span className="font-bold text-gray-800">{desc}</span><br />
+          Temperature is {t}&#8457; and it feels like it is {tFeels}&#8457; <br />
+          Humidity is {humidity}% 
+      <hr className="w-64 mx-auto bg-gray-600 mt-4" />
     </div>
   )
 }
