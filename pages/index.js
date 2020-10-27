@@ -2,21 +2,23 @@ import Nav from '../components/nav'
 import FiveDayForecast from '../components/FiveDayForecast'
 import { useState } from 'react';
 
+const detectLocation = new Promise((resolve,reject) => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      resolve(position.coords);
+    }, (error) => {
+      if(error.code === error.PERMISSION_DENIED) {
+        console.error("Error detecting location.");
+      }
+    });
+  }
+});
+
+
 export default function IndexPage() {
   const [weather, setWeather] = useState({});
 
-  const detectLocation = new Promise((resolve,reject) => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        resolve(position.coords);
-      }, (error) => {
-        if(error.code === error.PERMISSION_DENIED) {
-          console.error("Error detecting location.");
-        }
-      });
-    }
-  });
-  
+
   async function fetchWeatherData(location) {
     const res = await fetch(`${process.env.BASE_URL}/api/weather/?lat=${location.latitude}&lon=${location.longitude}`)
     const weather = await res.json()
